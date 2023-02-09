@@ -1,18 +1,34 @@
 # MicroProfile-sct-demo
 Practical Cloud-Native Java Development with MicroProfile
 
-# MicroProfile generated Applications
+## MicroProfile generated Applications
+## Introduction
 
-MicroProfile Starter has generated 2 MicroProfile applications for you.
+MicroProfile Starter has generated this MicroProfile application for you containing some endpoints which are called from the main application
 
-There are 2 projects generated so that the examples for the Rest Client and/or JWT Auth specification are more realistic in the sense that they actually call an endpoint within another service.
+The generation of the executable jar file can be performed by issuing the following command
 
-. In the `service-a` directory, you can find an application with the major parts of the application. This can be seen as the 'client'.
-. In the `service-b` directory, you can find some endpoints which will be called by code within the client application. This can be seen as the 'backend'.
+    mvn clean package
 
-Have a look in the `readme.md` file in each directory which describes how each project can be built and run.
+This will create an executable jar file **sct-demo.jar** within the _target_ maven folder. This can be started by executing the following command
+java -jar target/sct-demo.jar
 
 
-Once both projects are built and started, open your browser at the following URL to launch the test page and execute both projects:
+### Liberty's Dev Mode
 
-    http://localhost:9080/index.html
+During development, you can use Liberty's development mode (dev mode) to code while observing and testing your changes on the fly.
+With the dev mode, you can code along and watch the change reflected in the running server right away;
+unit and integration tests are run on pressing Enter in the command terminal; you can attach a debugger to the running server at any time to step through your code.
+
+    mvn liberty:dev
+
+## Specification examples
+
+### Rest Client
+
+A type safe invocation of HTTP rest endpoints. Specification [here](https://microprofile.io/project/eclipse/microprofile-rest-client)
+
+The example calls one endpoint from another JAX-RS resource where generated Rest Client is injected as CDI bean.
+
+### Open API
+    http://localhost:9081/openapi/ui/
